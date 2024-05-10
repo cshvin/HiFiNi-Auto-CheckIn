@@ -1,32 +1,32 @@
-# This workflow will build a Java project with Ant
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-ant
+# 此工作流程将使用 Ant 构建一个 Java 项目
+# 有关更多信息，请参阅：https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-ant
 
-name: HiFINI-Auto-CheckIn
+姓名：名称： HiFINI-自动签入
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 22 * * *" # 北京时间上午06:30
+    - cron: "00 16 * * *"    - cron: "30 22 * * *" # 北京时间上午06:30# 北京时间上午06:30
 
 jobs:
   build:
     env:
-      COOKIE: ${{ secrets.COOKIE }}
-      SERVER_CHAN: ${{ secrets.SERVER_CHAN }}
-      DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
-      WXWORK_WEBHOOK: ${{ secrets.WXWORK_WEBHOOK }}
-      TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
-      TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-    runs-on: ubuntu-latest
+      COOKIE:       饼干：${{秘密.COOKIE}}{{ secrets.COOKIE }}
+      SERVER_CHAN:       SERVER_CHAN：${{ Secrets.SERVER_CHAN }}{{ secrets.SERVER_CHAN }}
+      DINGTALK_WEBHOOK:       DINGTALK_WEBHOOK：${{ Secrets.DINGTALK_WEBHOOK }}{{ secrets.DINGTALK_WEBHOOK }}
+      WXWORK_WEBHOOK:       WXWORK_WEBHOOK：${{secrets.WXWORK_WEBHOOK}}{{ secrets.WXWORK_WEBHOOK }}
+      TG_CHAT_ID:       TG_CHAT_ID：${{ Secrets.TG_CHAT_ID }}{{ secrets.TG_CHAT_ID }}
+      TG_BOT_TOKEN:       TG_BOT_TOKEN：${{ Secrets.TG_BOT_TOKEN }}{{ secrets.TG_BOT_TOKEN }}
+    runs-on:     运行：ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 8
-        uses: actions/setup-java@v3
+    脚步：
+      -用途：- 使用：actions/checkout@v3
+      - name:       - 名称：设置 JDK 8
+        uses:         使用：actions/setup-java@v3
         with:
           java-version: '8'
           distribution: 'temurin'
-      - name: Build with Ant
-        run: |
-          mvn compile
+      - name:       - 名称：使用 Ant 构建
+        运行：|
+          MVN编译
           mvn exec:java -Dexec.mainClass="cloud.ohiyou.Main"
